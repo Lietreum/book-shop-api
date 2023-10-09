@@ -1,0 +1,11 @@
+{
+  "name": "book-shop-api",
+  "version": "1.0.0",
+  "description": "for school project with pak Ilham",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lietreum",
+  "license": "ISC"
+}
