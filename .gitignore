@@ -1,3 +1,2 @@
-/index.js
-.gitignore
+node_modules
 apikey.txt
