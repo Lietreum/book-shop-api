@@ -5,26 +5,26 @@ const port = 3333
 
 // GET method
 app.get('/', (req, res) => {
-    res.json({ message: "Hello, this is a JSON response" });
+    res.json({ message: "Hallo ini respon JSON wkwkw" });
 })
 
 // POST method
 app.post('/', (req, res) => {
-    res.send('Got a POST request')
+    res.send('Sebuah POST request')
 })
 
 // PUT method
 app.put('/user', (req, res) => {
-    res.send('Got a PUT request at /user')
+    res.send('/user')
 })
 
 // DELETE method
 app.delete('/user', (req, res) => {
-    res.send('Got a DELETE request at /user')
+    res.send('  DELETE request at /user')
 })
 
 app.get('/EsKopi', (req, res) => {
-    res.send("Hello ini about")
+    res.send("pengen drink eskopi")
 })
 
 app.get("/Eskopi/:Vanilla", (req, res) => {
@@ -85,4 +85,3 @@ app.get("/users/:id", (req, res) => {
 });
 
 app.listen(port, () => console.log(`Server running on port ${port}`))
-    
