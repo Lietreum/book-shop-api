@@ -7,16 +7,14 @@ const express = require('express')
         res.send("Hello ini express")
     })
 
-    app.get('/about',(req,res) =>{
+    app.get('/EsKopi',(req,res) =>{
         res.send("Hello ini about")
     })
 
-    app.get("/users/:id", (req, res) => {
+    app.get("/Eskopi/:Vanilla", (req, res) => {
         res.send("Ini tampilan user");
     });
 
     
-
-
 
     app.listen(port,() => console.log(`Server running on port ${port}`))
