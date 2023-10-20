@@ -70,10 +70,3 @@ app.get("/users/:id", (req, res) => {
     res.json(result);
 });
 app.listen(port, () => console.log(`Server running on port ${port}`))
-
-// git remote rm origin
-// // BEGIN
-// git add .
-// git commit -m "Your commit message"
-// git push origin main
-// // END
