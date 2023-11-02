@@ -1,72 +1,114 @@
-const express = require('express');
+const express = require("express");
+// const { Client } = require("pg");
 
-const app = express()
-const port = 3333
+const app = express();
+// app.use(express.json());
+const port = 3333;
 
-// GET method
-app.get('/', (req, res) => {
-    res.json({ message: "Hallo ini respon JSON wkwkw" });
-})
+const route = require("./routes/index");
+app.use(route);
 
-// POST method
-app.post('/', (req, res) => {
-    res.send('Sebuah POST request')
-})
+// const client = new Client({
+//   user: "postgres",
+//   host: "localhost",
+//   database: "book_store_api",
+//   password: "1234",
+//   port: 3333,
+// });
 
-// PUT method
-app.put('/user', (req, res) => {
-    res.send('/user')
-})
+// client
+//   .connect()
+//   .then(() => {
+//     console.log("Terhubung ke database Postgre");
+//   })
+//   .catch((error) => {
+//     console.error("Gagal terhubung ke postgre");
+//   });
 
-// DELETE method
-app.delete('/user', (req, res) => {
-    res.send('  DELETE request at /user')
-})
+// app.get("/users", async (req, res) => {
+//   let id = parseInt(req.params.id);
 
-app.get('/EsKopi', (req, res) => {
-    res.send("pengen drink eskopi")
-})
+//   //konek dengan database
+//   client
+//     .connect()
+//     .then(() => {
+//       console.log("Terhubung ke database Postgre");
+//     })
+//     .catch((error) => {
+//       console.error("Gagal terhubung ke postgre");
+//     });
 
-app.get("/Eskopi/:Vanilla", (req, res) => {
-    res.send("Ini tampilan user");
-});
+//   //ambil data
+  // client.query(
+  //   "SELECT user_id, nama, alamat FROM public.users",
+  //   [id],
+  //   (req, result) => {
+  //     res.json(result.rows);
+  //   }
+  // );
 
-//  Bagian nomer 5
-const data_users = [
-    // = port/1 etc
-    { id: 1, name: "Ilham Anugrah", alamat: "Sukabumi" },
-    { id: 2, name: "Ghina Khairunnisa", alamat: "Bandung" },
-    { id: 3, name: "Hana Syifa", alamat: "Jakarta" },
-    { id: 4, name: "Daehan Ibrahim", alamat: "Bandung" },
-];
+//   // //tampilkan data
+//   // res.json({
+//   //     massage: "data user",
+//   //     data : data,
+//   // });
+// });
 
-app.get("/users", (req, res) => {
-    //mendapatkan data dari database
-    const data = data_users; // understablee
-    let result = {
-        status: 200,
-        data: data,
-    };
+// app.get("/users/:id", async (req, res) => {});
 
-    res.json(result);
-});
+// app.post("/users/", async (req, res) => {
+//   let data = req.body;
 
-app.get("/users/:id", (req, res) => {
-    // get data dari parameter
-    let id = parseInt(req.params.id);
+//   const query =
+//     "INSERT INTO public.users(user_id, nama, alamat) VALUES ($1, $2, $3);";
 
-    // get data dari database
-    let result;
-    const user = data_users.find((user) => user.id === id);
-    if (user) {
-        result = {
-            status: 200,
-            data: user,
-        };
-        res.json(result);
-    } else {
-        res.status(404).json({ error: "User not found" });
-    }
-    res.json(result);
-});
-app.listen(port, () => console.log(`Server running on port ${port}`))
+//   client.query(query, [data.user_id, data.nama, data.alamat], (err, result) => {
+//     if (err) {
+//       console.error("Error executing insert:", err);
+//       return res.status(500).json({ error: "Terjadi kesalahan " + err });
+//     } else {
+//       res.json({
+//         message: "Data berhasil dimasukan",
+//       });
+//     }
+//   });
+// });
+
+app.listen(port, () => console.log(`Server running on port ${port}`));
+
+// const data_users = [
+//     { id: 1, name: "Ijong", komentar: "Bantuin dong" },
+//     { id: 2, name: "Yuuichi", komentar: "gantiin gw" },
+//     { id: 3, name: "Misterius", komentar: "Jakarta keren ya" },
+//     { id: 4, name: "Lala", komentar: "Pusing banget" },
+// ];
+
+// app.get("/users", (req, res) => {
+//     //mendapatkan data dari database
+//     const Data = data_users;
+
+//     //memberikan respon json data
+//     let result = {
+//         status: 200,
+//         data: Data,
+//     };
+
+//     res.json(result);
+// });
+
+// app.get("/users/:id", (req, res) => {
+
+//     let id = parseInt(req.params.id);
+
+//     let result;
+//     const user = data_users.find((user) => user.id === id);
+//     if (user) {
+//         result = {
+//         status: 200,
+//         data: user,
+//         };
+//     }  else {
+//         res.status(404).json({ error: "User not found" });
+//     }
+//     res.json(result);
+// });
